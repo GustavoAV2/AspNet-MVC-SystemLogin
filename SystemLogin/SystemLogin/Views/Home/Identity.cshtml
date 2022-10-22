@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>Name: @User.Identity?.Name</p><br/>
+    <p>Authenticated: @User.Identity?.IsAuthenticated</p>
+    <hr>
+    <a class="nav-link text-blue" asp-area="Identity" asp-controller="Home" asp-action="Index">Back to HomePage...</a>
+}
+else
+{
+    <h3>Você ainda não está logado!</h3><br/>
+    <a class="nav-link text-blue" asp-area="Identity" asp-page="/Account/Login">Sing In to view...</a>
+}
